@@ -39,16 +39,18 @@ var todoList = {
     var totalTodos = this.todos.length;
     var completedTodos = 0;
 
+    //Get number of completed todos
     for (var i = 0; i < totalTodos; i++) {
       if (this.todos[i].completed === true) {
         completedTodos++;
       }
     }
-
+    //Case 1: if everything's true, make everything false.
     if (completedTodos === totalTodos) {
       for (var i = 0; i < totalTodos; i++) {
         this.todos[i].completed = false;
       }
+      //Case 2: Otherwise, make everything true.
     } else {
       for (var i = 0; i < totalTodos; i++) {
         this.todos[i].completed = true;
@@ -63,9 +65,6 @@ var todoList = {
 var handlers = {
   displayTodos: function() {
     todoList.displayTodos();
-  },
-  toggleAll: function() {
-    todoList.toggleAll();
   },
   addTodo: function() {
     var addTodoTextInput = document.getElementById("addTodoTextInput");
@@ -83,5 +82,22 @@ var handlers = {
     );
     changeTodoPositionInput.value = "";
     changeTodoTextInput.value = "";
+  },
+  deleteTodo: function() {
+    var deleteTodoPositionInput = document.getElementById(
+      "deleteTodoPositionInput"
+    );
+    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+    deleteTodoPositionInput.value = "";
+  },
+  toggleCompleted: function() {
+    var toggleCompletedPositionInput = document.getElementById(
+      "toggleCompletedPositionInput"
+    );
+    todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+    toggleCompletedPositionInput.value = "";
+  },
+  toggleAll: function() {
+    todoList.toggleAll();
   }
 };
