@@ -63,6 +63,7 @@ var todoList = {
 
 //interacting with the user
 var handlers = {
+  //The handlers object contains all the controls available within the UI
   displayTodos: function() {
     todoList.displayTodos();
   },
