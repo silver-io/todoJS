@@ -69,7 +69,19 @@ var handlers = {
   },
   addTodo: function() {
     var addTodoTextInput = document.getElementById("addTodoTextInput");
-    todoList.addTodo(addTodoTextInput.value);
-    addTodoTextInput.value = "";
+    todoList.addTodo(addTodoTextInput.value); //adds the value that's in the input field
+    addTodoTextInput.value = ""; //removes the value from the input field after we've added it to the list
+  },
+  changeTodo: function() {
+    var changeTodoPositionInput = document.getElementById(
+      "changeTodoPositionInput"
+    );
+    var changeTodoTextInput = document.getElementById("changeTodoTextInput");
+    todoList.changeTodo(
+      changeTodoPositionInput.valueAsNumber,
+      changeTodoTextInput.value
+    );
+    changeTodoPositionInput.value = "";
+    changeTodoTextInput.value = "";
   }
 };
