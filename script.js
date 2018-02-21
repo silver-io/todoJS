@@ -106,7 +106,7 @@ var handlers = {
 //this new object renders the todos to the screen.
 var view = {
   displayTodos: function() {
-    var todosUl = document.querySelector("ul"); //takes the ul element
+    var todosUl = document.querySelector("ul"); //selects the ul element
     todosUl.innerHTML = ""; //if there are any items, we delete them.
     for (var i = 0; i < todoList.todos.length; i++) {
       //creates a li element for each item in the todos array
