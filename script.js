@@ -64,13 +64,11 @@ var todoList = {
 //interacting with the user
 var handlers = {
   //The handlers object contains all the controls available within the UI.
-  displayTodos: function() {
-    todoList.displayTodos();
-  },
   addTodo: function() {
     var addTodoTextInput = document.getElementById("addTodoTextInput");
     todoList.addTodo(addTodoTextInput.value); //adds the value that's in the input field
     addTodoTextInput.value = ""; //removes the value from the input field after we've added it to the list
+    view.displayTodos();
   },
   changeTodo: function() {
     var changeTodoPositionInput = document.getElementById(
@@ -83,6 +81,7 @@ var handlers = {
     );
     changeTodoPositionInput.value = "";
     changeTodoTextInput.value = "";
+    view.displayTodos();
   },
   deleteTodo: function() {
     var deleteTodoPositionInput = document.getElementById(
@@ -90,6 +89,7 @@ var handlers = {
     );
     todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
     deleteTodoPositionInput.value = "";
+    view.displayTodos();
   },
   toggleCompleted: function() {
     var toggleCompletedPositionInput = document.getElementById(
@@ -97,20 +97,22 @@ var handlers = {
     );
     todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
     toggleCompletedPositionInput.value = "";
+    view.displayTodos();
   },
   toggleAll: function() {
     todoList.toggleAll();
+    view.displayTodos();
   }
 };
 
 //this new object renders the todos to the screen.
+
 var view = {
   displayTodos: function() {
     var todosUl = document.querySelector("ul"); //selects the ul element
     todosUl.innerHTML = ""; //if there are any items, we delete them.
     for (var i = 0; i < todoList.todos.length; i++) {
-      //creates a li element for each item in the todos array
-      var todoLi = document.createElement("li");
+      var todoLi = document.createElement("li"); //creates a li element for each item in the todos array
       var todo = todoList.todos[i];
       var todoTextWithCompletion = "";
 
