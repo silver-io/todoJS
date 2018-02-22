@@ -111,6 +111,16 @@ var view = {
     for (var i = 0; i < todoList.todos.length; i++) {
       //creates a li element for each item in the todos array
       var todoLi = document.createElement("li");
+      var todo = todoList.todos[i];
+      var todoTextWithCompletion = "";
+
+      if (todo.completed === true) {
+        todoTextWithCompletion = "(x) " + todo.todoText;
+      } else {
+        todoTextWithCompletion = "() " + todo.todoText;
+      }
+
+      todoLi.textContent = todoTextWithCompletion;
       todosUl.appendChild(todoLi); //appends the created items to the todos ul.
     }
   }
